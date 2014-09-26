@@ -7,6 +7,7 @@ import (
 	"os"
 	"os/user"
 	"path"
+	"path/filepath"
 
 	"github.com/BurntSushi/toml"
 	"github.com/alexcesaro/mail/gomail"
@@ -75,7 +76,7 @@ func main() {
 		os.Exit(1)
 	}
 
-	client.send(*to, attachments[0], *message, attachments)
+	client.send(*to, filepath.Base(attachments[0]), *message, attachments)
 
 	fmt.Println("sent")
 }
